@@ -17,6 +17,9 @@ export function getAppointmentsForDay(state, day) {
 
   console.log("DAY OF WEEK: ", appointmentsForDay.name, "---- given appointments:", appointmentsForDay.appointments);
 
-  return (!appointmentsForDay || appointmentsForDay.appointments.length < 1) ? [] : appointmentsForDay.appointments.map(apptID => apptID = state.appointments[apptID]);
+  let apptMap = appointmentsForDay.appointments.map(apptID => apptID = state.appointments[apptID]);
+
+  console.log("APPT MAP_____", apptMap);
+  return (!appointmentsForDay || appointmentsForDay.appointments.length < 1) ? [] : appointmentsForDay.appointments.map(apptID => state.appointments[apptID]);
 
 }
