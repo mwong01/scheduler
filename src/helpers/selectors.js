@@ -9,7 +9,7 @@ export function getAppointmentsForDay(state, day) {
 
   console.log(state.days);
 
-  let appointmentsForDay = state.days.find(e => e.name == day);
+  let appointmentsForDay = state.days.find(e => e.name === day);
   if (!appointmentsForDay) {
     return [];
   }
