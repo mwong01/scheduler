@@ -3,7 +3,7 @@ import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
 import useVisualMode from "hooks/useVisualMode";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewsForDay } from "helpers/selectors";
 import Form from "components/Appointment/Form";
 
 import "components/Appointment/styles.scss";
