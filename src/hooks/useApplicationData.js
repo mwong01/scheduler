@@ -64,7 +64,12 @@ export default function useApplicationData() {
 
     // update the database with the interview data
     return axios.put(`/api/appointments/${id}`, appointment)
-      .then(() => dispatch({ type: SET_INTERVIEW, id, interview }))
+      .then(() => {
+        if(state.appointments[id].interview === null) {
+        let dayObj = state.days.find(day => day.name === state.day);
+        state.days[dayObj.id - 1].spots--}
+        dispatch({ type: SET_INTERVIEW, id, interview })
+      })
   }
 
   function cancelInterview(id) {
@@ -75,7 +80,12 @@ export default function useApplicationData() {
 
     // delete appointment slot from database
     return axios.delete(`/api/appointments/${id}`, appointment)
-      .then(() => dispatch({ type: SET_INTERVIEW, id, interview: null }))
+      .then(() => {
+        let dayObj = state.days.find(day => day.name === state.day);
+        console.log('does this delete?', dayObj);
+        state.days[dayObj.id - 1].spots++
+        dispatch({ type: SET_INTERVIEW, id, interview: null })
+      })
   }
 
   return {

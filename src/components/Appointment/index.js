@@ -3,7 +3,6 @@ import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
 import useVisualMode from "hooks/useVisualMode";
-import { getAppointmentsForDay, getInterview, getInterviewsForDay } from "helpers/selectors";
 import Form from "components/Appointment/Form";
 
 import "components/Appointment/styles.scss";
@@ -12,9 +11,6 @@ import "components/Appointment/styles.scss";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
-import Create from "components/Appointment/Form";
-import Edit from "components/Appointment/Form";
-
 
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
@@ -35,7 +31,7 @@ export default function Appointment(props) {
     transition(SAVING);
     props.bookInterview(props.id, interview).then(
       () => transition(SHOW)
-    ).catch(function (error) {transition(ERROR_SAVE, true)})
+    ).catch(function (error) { transition(ERROR_SAVE, true) })
   };
 
   function deleteAppt() {
@@ -44,7 +40,7 @@ export default function Appointment(props) {
 
   function confirmDeleteAppt() {
     transition(DELETING, true);
-    props.cancelInterview(props.id).then(() => transition(EMPTY)).catch(function (error) {transition(ERROR_DELETE, true)})
+    props.cancelInterview(props.id).then(() => transition(EMPTY)).catch(function (error) { transition(ERROR_DELETE, true) })
   }
 
   function edit() {
@@ -100,24 +96,24 @@ export default function Appointment(props) {
       )}
 
       {mode === EDIT && (
-      <Form
-        name={props.interview.student}
-        interviewer={props.interview.interviewer.id}
-        interviewers={props.interviewers}
-        onCancel={() => back()}
-        onSave={save}
-      />
+        <Form
+          name={props.interview.student}
+          interviewer={props.interview.interviewer && props.interview.interviewer.id}
+          interviewers={props.interviewers}
+          onCancel={() => back()}
+          onSave={save}
+        />
       )}
       {mode === ERROR_SAVE && (
         <Error
-        message={"Could not save message. Please try again."}
-        onClose={back}
+          message={"Could not save message. Please try again."}
+          onClose={back}
         />
       )}
       {mode === ERROR_DELETE && (
         <Error
-        message={"Could not delete message. Please try again."}
-        onClose={back}
+          message={"Could not delete message. Please try again."}
+          onClose={back}
         />
       )}
 
