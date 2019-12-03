@@ -16,14 +16,40 @@ function reducer(state, action) {
 
       return {
         ...state,
+        days: state.days.map((day) => {
+          let spotDelta = 0;
+          if(day.name === state.day) {
+            if (interview && state.appointments[id].interview) {
+              spotDelta = 0;
+            } else if(interview) {
+              spotDelta = -1;
+            } else {
+              spotDelta = 1;
+            }
+          } 
+          return {...day,
+                  spots: day.spots + spotDelta};
+        }),
         appointments: {
           ...state.appointments,
           [id]: {
             ...state.appointments[action.id],
-            interview: action.interview ? { ...interview } : null
-          }
+            interview: action.interview ? {...interview} : null
+          } 
         }
       }
+      
+
+      // return {
+      //   ...state,
+      //   appointments: {
+      //     ...state.appointments,
+      //     [id]: {
+      //       ...state.appointments[action.id],
+      //       interview: action.interview ? { ...interview } : null
+      //     }
+      //   }
+      // }
 
     default:
       throw new Error(
@@ -65,9 +91,9 @@ export default function useApplicationData() {
     // update the database with the interview data
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-        if(state.appointments[id].interview === null) {
-        let dayObj = state.days.find(day => day.name === state.day);
-        state.days[dayObj.id - 1].spots--}
+        // if(state.appointments[id].interview === null) {
+        // let dayObj = state.days.find(day => day.name === state.day);
+        // state.days[dayObj.id - 1].spots--}
         dispatch({ type: SET_INTERVIEW, id, interview })
       })
   }
@@ -81,9 +107,9 @@ export default function useApplicationData() {
     // delete appointment slot from database
     return axios.delete(`/api/appointments/${id}`, appointment)
       .then(() => {
-        let dayObj = state.days.find(day => day.name === state.day);
-        console.log('does this delete?', dayObj);
-        state.days[dayObj.id - 1].spots++
+        // let dayObj = state.days.find(day => day.name === state.day);
+        // console.log('does this delete?', dayObj);
+        // state.days[dayObj.id - 1].spots++
         dispatch({ type: SET_INTERVIEW, id, interview: null })
       })
   }
