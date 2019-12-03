@@ -1,6 +1,5 @@
 import React, { useReducer, useEffect } from "react";
 import axios from "axios";
-// const axios = require('axios');
 
 const SET_DAY = "SET_DAY";
 const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
