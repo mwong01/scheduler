@@ -1,5 +1,5 @@
 # Interview Scheduler
-Single-page React application that allows users to book, edit and cancel interviews in a given one-hour slot for a selected weekday.
+Single-page React application that allows users to book, edit and cancel interviews in a given one-hour slot for a selected weekday. <br>
 This application utilizes several testing development platforms, namely Storybook, Webpack Dev Server, Jest and Cypress. Also combines a concise API and WebSocket server to build a realtime experience.
 
 ## Setup and Getting Started
