@@ -1,10 +1,11 @@
 # Interview Scheduler
-Single-page React application that allows users to book, edit and cancel interviews, combining a concise API and WebSocket server to build a realtime experience.
+Single-page React application that allows users to book, edit and cancel interviews in a given one-hour slot for a selected weekday.
+This application utilizes several testing development platforms, namely Storybook, Webpack Dev Server, Jest and Cypress. Also combines a concise API and WebSocket server to build a realtime experience.
 
 ## Setup and Getting Started
 
 1. Install dependencies with `npm install`.
-2. [Download](https://github.com/mwong01/scheduler-api) for the API server and follow on-screen instructions
+2. [Download](https://github.com/mwong01/scheduler-api) the API server and follow on-screen instructions
 3. Initiate Webpack Development Server with `npm start`.
 4. Initiate Jest Test with `npm test`.
 5. Initiate Storybook Visual Testbed with `npm run storybook`.
