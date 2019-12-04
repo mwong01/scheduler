@@ -6,52 +6,6 @@ import reducer, {
   SET_INTERVIEW
 } from "reducers/application";
 
-
-// const SET_DAY = "SET_DAY";
-// const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
-// const SET_INTERVIEW = "SET_INTERVIEW";
-
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case SET_DAY:
-//       return { ...state, day: action.day };
-//     case SET_APPLICATION_DATA:
-//       return { ...state, days: action.days, appointments: action.appointments, interviewers: action.interviewers };
-//     case SET_INTERVIEW:
-//       const { id, interview } = action;
-
-//       return {
-//         ...state,
-//         days: state.days.map((day) => {
-//           let spotCounts = 0;
-//           if(day.name === state.day) {
-//             if (interview && state.appointments[id].interview) {
-//               spotCounts = 0;
-//             } else if(interview) {
-//               spotCounts = -1;
-//             } else {
-//               spotCounts = 1;
-//             }
-//           } 
-//           return {...day,
-//                   spots: day.spots + spotCounts};
-//         }),
-//         appointments: {
-//           ...state.appointments,
-//           [id]: {
-//             ...state.appointments[action.id],
-//             interview: action.interview ? {...interview} : null
-//           } 
-//         }
-//       }
-
-//     default:
-//       throw new Error(
-//         `Tried to reduce with unsupported action type: ${action.type}`
-//       );
-//   }
-// }
-
 export default function useApplicationData() {
 
   const [state, dispatch] = useReducer(reducer, {
@@ -86,9 +40,6 @@ export default function useApplicationData() {
     // update the database with the interview data
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-        // if(state.appointments[id].interview === null) {
-        // let dayObj = state.days.find(day => day.name === state.day);
-        // state.days[dayObj.id - 1].spots--}
         dispatch({ type: SET_INTERVIEW, id, interview })
       })
   }
@@ -102,9 +53,6 @@ export default function useApplicationData() {
     // delete appointment slot from database
     return axios.delete(`/api/appointments/${id}`, appointment)
       .then(() => {
-        // let dayObj = state.days.find(day => day.name === state.day);
-        // console.log('does this delete?', dayObj);
-        // state.days[dayObj.id - 1].spots++
         dispatch({ type: SET_INTERVIEW, id, interview: null })
       })
   }

@@ -16,25 +16,28 @@ export default function reducer(state, action) {
       return {
         ...state,
         days: state.days.map((day) => {
+          //render spot counts update
           let spotCounts = 0;
-          if(day.name === state.day) {
+          if (day.name === state.day) {
             if (interview && state.appointments[id].interview) {
               spotCounts = 0;
-            } else if(interview) {
+            } else if (interview) {
               spotCounts = -1;
             } else {
               spotCounts = 1;
             }
-          } 
-          return {...day,
-                  spots: day.spots + spotCounts};
+          }
+          return {
+            ...day,
+            spots: day.spots + spotCounts
+          };
         }),
         appointments: {
           ...state.appointments,
           [id]: {
             ...state.appointments[action.id],
-            interview: action.interview ? {...interview} : null
-          } 
+            interview: action.interview ? { ...interview } : null
+          }
         }
       }
 
