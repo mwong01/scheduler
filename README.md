@@ -11,7 +11,12 @@ Single-page React application that allows users to book, edit and cancel intervi
 6. View Interview Scheduler on (http://localhost:8000/).
 
 ## Select Screenshots
-
+!["Nothing on Monday!"](https://github.com/mwong01/scheduler/blob/master/docs/scheduler-empty-schedule.png)
+!["Create an interview"](https://github.com/mwong01/scheduler/blob/master/docs/scheduler-create-interview.png)
+!["Saving an interview"](https://github.com/mwong01/scheduler/blob/master/docs/scheduler-saving-interview.png)
+!["Deleting an interview"](https://github.com/mwong01/scheduler/blob/master/docs/scheduler-delete-interview.png)
+!["Interviewee name required!"](https://github.com/mwong01/scheduler/blob/master/docs/scheduler-name-required.png)
+!["Jam-packed Monday schedule!"](https://github.com/mwong01/scheduler/blob/master/docs/scheduler-full-monday.png)
 
 ## DevDependencies
 - "@babel/core": "^7.4.3"
