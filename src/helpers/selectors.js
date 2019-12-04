@@ -12,8 +12,6 @@ export function getAppointmentsForDay(state, day) {
     return [];
   }
 
-  // let apptMap = appointmentsForDay.appointments.map(apptID => apptID = state.appointments[apptID]);
-
   return (!appointmentsForDay || appointmentsForDay.appointments.length < 1) ? [] : appointmentsForDay.appointments.map(apptID => state.appointments[apptID]);
 
 }
